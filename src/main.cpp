@@ -5,6 +5,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#define LOG(x) std::cout << x << std::endl;
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
 }
@@ -16,7 +18,7 @@ void processInput(GLFWwindow* window) {
 
 int main(int, char**) {
     if (!glfwInit()) {
-        std::cout << "Failed to initialize GLFW" << std::endl;
+        LOG("Failed to initialize GLFW");
         return -1;
     }
 
@@ -26,7 +28,7 @@ int main(int, char**) {
     GLFWwindow* window = glfwCreateWindow(1280, 720, "Hello World", nullptr, nullptr);
 
     if (!window) {
-        std::cout << "Failed to create GLFW window" << std::endl;
+        LOG("Failed to create GLFW window");
         glfwTerminate();
         return -1;
     }
@@ -34,10 +36,12 @@ int main(int, char**) {
     glfwMakeContextCurrent(window);
 
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
-        std::cout << "Failed to initialize GLAD" << std::endl;
+        LOG("Failed to initialize GLAD");
         glfwTerminate();
         return -1;
     }
+
+    LOG("[INFO] OpenGL 3.3 Initalized");
 
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
