@@ -17,12 +17,7 @@ find_package(glfw3 CONFIG REQUIRED)
 find_package(glad CONFIG REQUIRED)
 
 add_subdirectory(src/Logger)
-
-add_executable(LearnOpenGL src/main.cpp)
-
-target_link_libraries(LearnOpenGL PRIVATE glfw glad::glad LGL_Logger)
-
-target_include_directories(LearnOpenGL PRIVATE "${PROJECT_BINARY_DIR}")
+add_subdirectory(src/Main)
 
 # include(CTest)
 # enable_testing()
