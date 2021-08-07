@@ -5,7 +5,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include <Logger.h>
+#include "Logger.h"
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height)
 {
@@ -20,7 +20,7 @@ void processInput(GLFWwindow *window)
 
 int main(int, char **)
 {
-	Logger logger();
+	Logger logger;
 
 	if (!glfwInit())
 	{
@@ -31,7 +31,7 @@ int main(int, char **)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	GLFWwindow *window = glfwCreateWindow(1280, 720, "Hello World", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(1280, 720, "Hello World", nullptr, nullptr);
 
 	if (!window)
 	{
@@ -42,7 +42,7 @@ int main(int, char **)
 
 	glfwMakeContextCurrent(window);
 
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
 	{
 		logger.Error("Failed to initialize GLAD");
 		glfwTerminate();

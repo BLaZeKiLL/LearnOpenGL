@@ -18,11 +18,11 @@ find_package(glad CONFIG REQUIRED)
 
 add_subdirectory(src/Logger)
 
-add_executable(LearnOpenGL src/Main.cpp)
+add_executable(LearnOpenGL src/main.cpp)
 
 target_link_libraries(LearnOpenGL PRIVATE glfw glad::glad LGL_Logger)
 
-target_include_directories(LearnOpenGL PRIVATE "${PROJECT_BINARY_DIR}" "${PROJECT_SOURCE_DIR}/src/Logger")
+target_include_directories(LearnOpenGL PRIVATE "${PROJECT_BINARY_DIR}")
 
 # include(CTest)
 # enable_testing()
