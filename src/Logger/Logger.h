@@ -2,9 +2,9 @@ class Logger
 {
 public:
 	static const int LOG_LEVEL_ERROR = 0;
-	static const int LOG_LEVEL_WARN = 0;
-	static const int LOG_LEVEL_INFO = 0;
-	static const int LOG_LEVEL_DEBUG = 0;
+	static const int LOG_LEVEL_WARN = 1;
+	static const int LOG_LEVEL_INFO = 2;
+	static const int LOG_LEVEL_DEBUG = 3;
 
 private:
 	int m_LogLevel;
