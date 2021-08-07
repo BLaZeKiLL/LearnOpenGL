@@ -10,12 +10,19 @@ endif()
 
 project(LearnOpenGL VERSION 0.1.0)
 
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
 find_package(glfw3 CONFIG REQUIRED)
 find_package(glad CONFIG REQUIRED)
 
-add_executable(LearnOpenGL src/main.cpp)
+add_subdirectory(src/Logger)
 
-target_link_libraries(LearnOpenGL PRIVATE glfw glad::glad)
+add_executable(LearnOpenGL src/Main.cpp)
+
+target_link_libraries(LearnOpenGL PRIVATE glfw glad::glad LGL_Logger)
+
+target_include_directories(LearnOpenGL PRIVATE "${PROJECT_BINARY_DIR}" "${PROJECT_SOURCE_DIR}/src/Logger")
 
 # include(CTest)
 # enable_testing()

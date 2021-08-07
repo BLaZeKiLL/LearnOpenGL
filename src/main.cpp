@@ -5,62 +5,73 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#define LOG(x) std::cout << x << std::endl;
+#include <Logger.h>
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
-    glViewport(0, 0, width, height);
+void framebuffer_size_callback(GLFWwindow *window, int width, int height)
+{
+	glViewport(0, 0, width, height);
 }
 
-void processInput(GLFWwindow* window) {
-    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);
+void processInput(GLFWwindow *window)
+{
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		glfwSetWindowShouldClose(window, true);
 }
 
-int main(int, char**) {
-    if (!glfwInit()) {
-        LOG("Failed to initialize GLFW");
-        return -1;
-    }
+int main(int, char **)
+{
+	Logger logger();
 
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    GLFWwindow* window = glfwCreateWindow(1280, 720, "Hello World", nullptr, nullptr);
+	if (!glfwInit())
+	{
+		logger.Error("Failed to initialize GLFW");
+		return -1;
+	}
 
-    if (!window) {
-        LOG("Failed to create GLFW window");
-        glfwTerminate();
-        return -1;
-    }
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	GLFWwindow *window = glfwCreateWindow(1280, 720, "Hello World", nullptr, nullptr);
 
-    glfwMakeContextCurrent(window);
+	if (!window)
+	{
+		logger.Error("Failed to create GLFW window");
+		glfwTerminate();
+		return -1;
+	}
 
-    if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
-        LOG("Failed to initialize GLAD");
-        glfwTerminate();
-        return -1;
-    }
+	glfwMakeContextCurrent(window);
 
-    LOG("[INFO] OpenGL 3.3 Initalized");
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	{
+		logger.Error("Failed to initialize GLAD");
+		glfwTerminate();
+		return -1;
+	}
 
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+	logger.Info("OpenGL 3.3 Initalized");
 
-    while (!glfwWindowShouldClose(window)) {
-        /* Act on input */
-        processInput(window);
+	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-        /* Render here */
-        glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+	while (!glfwWindowShouldClose(window))
+	{
+		/* Act on input */
+		processInput(window);
 
-        /* Swap front and back buffers */
-        glfwSwapBuffers(window);
+		/* Render here */
+		glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
 
-        /* Poll for and process events */
-        glfwPollEvents();
-    }
+		/* Swap front and back buffers */
+		glfwSwapBuffers(window);
 
-    glfwTerminate();
+		/* Poll for and process events */
+		glfwPollEvents();
+	}
 
-    return 0;
+	glfwTerminate();
+
+	logger.Info("Application Shutdown");
+
+	return 0;
 }
