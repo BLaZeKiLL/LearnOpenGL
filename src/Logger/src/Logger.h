@@ -11,12 +11,12 @@ private:
 
 public:
 	Logger();
-	Logger(const int level);
+	explicit Logger(int level);
 
-	void SetLevel(const int level);
+	void SetLevel(int level);
 
-	void Error(const char *message);
-	void Warn(const char *message);
-	void Info(const char *message);
-	void Debug(const char *message);
+	void Error(const char *message) const;
+	void Warn(const char *message) const;
+	void Info(const char *message) const;
+	void Debug(const char *message) const;
 };

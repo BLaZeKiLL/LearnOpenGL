@@ -80,8 +80,7 @@
 # *.ipr
 
 # CMake
-cmake-build
-cmake-build-*/
+build/
 
 # Mongo Explorer plugin
 .idea/**/mongoSettings.xml
@@ -552,10 +551,6 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
-
-# JetBrains Rider
-.idea/
-*.sln.iml
 
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio

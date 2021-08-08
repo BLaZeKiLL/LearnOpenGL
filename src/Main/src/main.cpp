@@ -47,7 +47,7 @@ int main(int, char **)
 		return -1;
 	}
 
-	logger.Info("OpenGL 3.3 Initalized");
+	logger.Info("OpenGL 3.3 Initialized");
 
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
