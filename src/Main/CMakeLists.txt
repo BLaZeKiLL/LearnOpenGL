@@ -1,5 +1,12 @@
+find_package(glfw3 CONFIG REQUIRED)
+find_package(glad CONFIG REQUIRED)
+
 add_executable(LearnOpenGL src/main.cpp)
 
-target_link_libraries(LearnOpenGL PRIVATE glfw glad::glad LGL_Logger)
+if (CMAKE_BUILD_TYPE MATCHES "Debug")
+    target_compile_options(LearnOpenGL PUBLIC /MTd)
+else()
+    target_compile_options(LearnOpenGL PUBLIC /MT)
+endif()
 
-target_include_directories(LearnOpenGL PRIVATE "${PROJECT_BINARY_DIR}")
+target_link_libraries(LearnOpenGL PRIVATE glfw glad::glad LGL_Logger)
