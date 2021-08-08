@@ -18,11 +18,11 @@ void processInput(GLFWwindow *window)
 
 int main(int, char **)
 {
-	Logger logger;
+    LGL::Logger::Init();
 
 	if (!glfwInit())
 	{
-		logger.Error("Failed to initialize GLFW");
+	    LGL_LOG_ERROR("Failed to initialize GLFW");
 		return -1;
 	}
 
@@ -33,7 +33,7 @@ int main(int, char **)
 
 	if (!window)
 	{
-		logger.Error("Failed to create GLFW window");
+	    LGL_LOG_ERROR("Failed to create GLFW window");
 		glfwTerminate();
 		return -1;
 	}
@@ -42,12 +42,12 @@ int main(int, char **)
 
 	if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
 	{
-		logger.Error("Failed to initialize GLAD");
+	    LGL_LOG_ERROR("Failed to initialize GLAD");
 		glfwTerminate();
 		return -1;
 	}
 
-	logger.Info("OpenGL 3.3 Initialized");
+	LGL_LOG_INFO("OpenGL 3.3 Initialized");
 
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
@@ -69,7 +69,7 @@ int main(int, char **)
 
 	glfwTerminate();
 
-	logger.Info("Application Shutdown");
+	LGL_LOG_INFO("Application Shutdown");
 
 	return 0;
 }
