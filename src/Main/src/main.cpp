@@ -18,22 +18,22 @@ void processInput(GLFWwindow *window)
 
 int main(int, char **)
 {
-    LGL::Logger::Init();
+	LGL::Logger::Init();
 
 	if (!glfwInit())
 	{
-	    LGL_LOG_ERROR("Failed to initialize GLFW");
+		LGL_LOG_ERROR("Failed to initialize GLFW");
 		return -1;
 	}
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	GLFWwindow* window = glfwCreateWindow(1280, 720, "Hello World", nullptr, nullptr);
+	GLFWwindow *window = glfwCreateWindow(1280, 720, "Hello World", nullptr, nullptr);
 
 	if (!window)
 	{
-	    LGL_LOG_ERROR("Failed to create GLFW window");
+		LGL_LOG_ERROR("Failed to create GLFW window");
 		glfwTerminate();
 		return -1;
 	}
@@ -42,7 +42,7 @@ int main(int, char **)
 
 	if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
 	{
-	    LGL_LOG_ERROR("Failed to initialize GLAD");
+		LGL_LOG_ERROR("Failed to initialize GLAD");
 		glfwTerminate();
 		return -1;
 	}
