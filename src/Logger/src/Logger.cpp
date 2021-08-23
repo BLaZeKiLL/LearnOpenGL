@@ -12,7 +12,7 @@ namespace LGL
 
 	void Logger::Init()
 	{
-		spdlog::set_pattern("%^[%T][%l][%n]%$ : %v");
+		spdlog::set_pattern("%^[%T][%4!l][%n]%$ : %v");
 		s_Logger = spdlog::stdout_color_mt("LGL");
 		s_Logger->set_level(spdlog::level::trace);
 	}

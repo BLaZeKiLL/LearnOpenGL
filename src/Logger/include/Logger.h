@@ -14,12 +14,17 @@ namespace LGL
 	public:
 		static void Init();
 
-		inline static std::shared_ptr<spdlog::logger> &GetLogger()
-		{ return s_Logger; }
+		inline static std::shared_ptr<spdlog::logger> &GetLogger();
 
 	private:
 		static std::shared_ptr<spdlog::logger> s_Logger;
 	};
+
+	// INLINE
+	std::shared_ptr<spdlog::logger>& Logger::GetLogger()
+	{
+		return s_Logger;
+	}
 }
 
 #define LGL_LOG_ERROR(...) LGL::Logger::GetLogger()->error(__VA_ARGS__)
